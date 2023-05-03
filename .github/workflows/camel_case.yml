@@ -38,3 +38,13 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Lower case DOCKER_IMAGE_NAME
+        run: echo "DOCKER_IMAGE_NAME=$(echo $DOCKER_IMAGE_NAME | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
+
+      - name: Build Docker image
+        run: docker build -t $REGISTRY/$DOCKER_IMAGE_NAME .
+
+      - name: Docker image ls 
+        run: docker image ls -a
