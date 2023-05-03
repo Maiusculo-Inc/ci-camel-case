@@ -5,6 +5,7 @@ on: [push]
 env:
    REGISTRY: ghcr.io
    DOCKER_IMAGE_NAME: ${{ github.repository }}
+   VAVA: place_holder
 
 
 jobs:
