@@ -5,7 +5,7 @@ on: [push]
 env:
    REGISTRY: ghcr.io
    DOCKER_IMAGE_NAME: ${{ github.repository }}
-   VAVA: $(echo $DOCKER_IMAGE_NAME | tr '[:upper:]' '[:lower:]')
+   VAVA: pepe
 
 
 jobs:
@@ -14,7 +14,13 @@ jobs:
     steps:
       - name: Echo
         run: echo ">>>> $(echo $DOCKER_IMAGE_NAME | tr '[:upper:]' '[:lower:]') "
-      
+
+      - name: Variable echo
+        run: echo $VAVA
+
+      - name: Reset Variable 
+        run: cho "VAVA=nenem" >> $GITHUB_ENV
+
       - name: Variable echo
         run: echo $VAVA
 
