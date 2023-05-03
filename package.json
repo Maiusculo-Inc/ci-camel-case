@@ -1,0 +1,12 @@
+{
+  "name": "ci-camel-case",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "repository": "git@github.com:Maiusculo-Inc/ci-camel-case.git",
+  "author": "Joao Pedro <joaopedro1172@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv-safe": "^8.2.0"
+  }
+}
