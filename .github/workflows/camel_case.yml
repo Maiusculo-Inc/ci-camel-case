@@ -32,5 +32,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Variable echo
-        run: echo $VAVA
+      - name: Log in to the Container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
