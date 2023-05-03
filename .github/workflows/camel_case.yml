@@ -1,27 +1,13 @@
-name: Set Variable
+name: Deploy and Test Package
 
 on: [push]
 
 env:
    REGISTRY: ghcr.io
    DOCKER_IMAGE_NAME: ${{ github.repository }}
-   VAVA: place_holder
 
 
 jobs:
-  set-variable:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo
-        run: echo ">>>> $(echo $DOCKER_IMAGE_NAME | tr '[:upper:]' '[:lower:]') "
-
-
-      - name: Set Variable 
-        run: echo "VAVA=$(echo $DOCKER_IMAGE_NAME | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-
-      - name: Variable echo
-        run: echo $VAVA
-
   build-and-push-image:
     runs-on: ubuntu-latest
     permissions:
@@ -42,12 +28,8 @@ jobs:
       - name: Lower case DOCKER_IMAGE_NAME
         run: echo "DOCKER_IMAGE_NAME=$(echo $DOCKER_IMAGE_NAME | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
-
       - name: Build Docker image
         run: docker build -t $REGISTRY/$DOCKER_IMAGE_NAME .
-
-      - name: Docker image ls 
-        run: docker image ls -a
 
       - name: Push Docker image to GitHub Packages
         run: docker push $REGISTRY/$DOCKER_IMAGE_NAME
