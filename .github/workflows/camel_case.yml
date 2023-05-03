@@ -5,6 +5,7 @@ on: [push]
 env:
    REGISTRY: ghcr.io
    DOCKER_IMAGE_NAME: ${{ github.repository }}
+   VAVA: $(echo $DOCKER_IMAGE_NAME | tr '[:upper:]' '[:lower:]')
 
 
 jobs:
@@ -13,6 +14,9 @@ jobs:
     steps:
       - name: Echo
         run: echo ">>>> $(echo $DOCKER_IMAGE_NAME | tr '[:upper:]' '[:lower:]') "
+      
+      - name: Variable echo
+        run: echo $VAVA
 
   build-and-push-image:
     runs-on: ubuntu-latest
