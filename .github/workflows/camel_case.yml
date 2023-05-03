@@ -17,7 +17,7 @@ jobs:
 
 
       - name: Set Variable 
-        run: echo "VAVA=nenem" >> $GITHUB_ENV
+        run: echo "VAVA=$(echo $DOCKER_IMAGE_NAME | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Variable echo
         run: echo $VAVA
