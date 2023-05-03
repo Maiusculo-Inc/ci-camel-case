@@ -2,9 +2,14 @@ name: Set Variable
 
 on: [push]
 
+env:
+   REGISTRY: ghcr.io
+   DOCKER_IMAGE_NAME: ${{ github.repository }}
+
+
 jobs:
   set-variable:
     runs-on: ubuntu-latest
     steps:
       - name: Echo
-        run: echo "Hello world"
+        run: echo ">>>> $DOCKER_IMAGE_NAME"
